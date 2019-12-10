@@ -12,7 +12,7 @@ const moveRight = (elem, amount, delay) => {
 			const elLeft = elem.getBoundingClientRect().left;
 
 			if (elRight + amount > w) {
-				reject();
+				reject({ w });
 			} else {
 				elem.style.transform = `translateX(${elLeft + amount}px)`;
 				resolve();
@@ -27,4 +27,4 @@ moveRight(btn, 100, 1000)
 	.then(() => moveRight(btn, 100, 1000))
 	.then(() => moveRight(btn, 100, 1000))
 	.then(() => moveRight(btn, 100, 1000))
-	.catch((err) => console.log('NOROOM              ', err));
+	.catch(({ w }) => console.log(`No ROOM window is ${w}px`));
